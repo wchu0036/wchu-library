@@ -26,19 +26,22 @@
         </li>
       </ul>
       <h3>Mapping Arrays</h3>
+      <!-- Activity 8: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <p>Famous works:</p>
+      <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
       <ul>
-        <!-- Activity 8: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
-        <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
-        <ul>
-          <li v-for="work in allFamousWorks" :key="work">
-            {{ work }}
-          </li>
-        </ul>
+        <li v-for="work in allFamousWorks" :key="work">
+          {{ work }}
+        </li>
       </ul>
 
       <h3>Finding in Arrays</h3>
       <p>Finding by property: {{ orwell?.name }}</p>
+      <ul>
+        <li v-for="work in orwell.famousWorks" :key="work">
+          {{ work.title }}
+        </li>
+      </ul>
 
       <h3>Nested Arrays/Objects</h3>
       <p>{{ austen?.name }}'s works:</p>
@@ -74,23 +77,17 @@
       <p>Store Types:</p>
       <!-- Activity 10: Iterate through the storeTypes array and display the store type and the number of stores that use that type. -->
       <!-- TODO: CODE TO RENDER LIST OF STORE TYPES HERE -->
-      <ul>
-        <li v-for="(value, key) in bookstores.storeTypes" :key="key">{{ key }}: {{ value }}</li>
-      </ul>
+      <p v-for="(value, key) in bookstores.storeTypes" :key="key">{{ key }}: {{ value }}</p>
 
       <h3>Nested Objects</h3>
       <p>Opening Hours:</p>
       <!-- Activity 11: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
       <!-- TODO: CODE TO RENDER LIST OF OPENING HOURS HERE -->
-      <ul>
-        <li v-for="(value, key) in bookstores.openingHours" :key="key">
-          {{ key }}: {{ value.open }} - {{ value.close }}
-        </li>
-      </ul>
+      <p v-for="(value, key) in bookstores.openingHours" :key="key">
+        {{ key }}: {{ value.open }} - {{ value.close }}
+      </p>
 
       <h3>Working with Arrays in Objects</h3>
-      <!-- Activity 12: Get the top sellers from the bookstores object. -->
-      <!-- TODO: CODE TO GET TOP SELLERS HERE -->
       <p>
         We operate in:
         <span v-for="country in bookstores.countries" :key="country">
@@ -98,6 +95,8 @@
           <span v-if="country != bookstores.countries[bookstores.countries.length - 1]">, </span>
         </span>
       </p>
+      <!-- Activity 12: Get the top sellers from the bookstores object. -->
+      <!-- TODO: CODE TO GET TOP SELLERS HERE -->
       <p>Our #1 seller: {{ bookstores.topSellers[0] }}</p>
     </section>
 
