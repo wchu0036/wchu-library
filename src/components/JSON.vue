@@ -37,6 +37,7 @@
 
       <h3>Finding in Arrays</h3>
       <p>Finding by property: {{ orwell?.name }}</p>
+      <p>{{ orwell?.name }}'s works:</p>
       <ul>
         <li v-for="work in orwell.famousWorks" :key="work">
           {{ work.title }}
