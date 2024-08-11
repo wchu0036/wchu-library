@@ -1,3 +1,4 @@
+// week 3 challenge 1
 <template>
   <button :class="['btn', colorClass, sizeClass]" :disabled="disabled" @click="onClick">
     {{ label }}

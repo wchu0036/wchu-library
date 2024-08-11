@@ -2,6 +2,7 @@
 // import JSON from './components/JSON.vue'
 import Form from './components/UserForm.vue'
 import CustomButton from './components/CustomButton.vue'
+import PrimevueTesting from './components/icons/PrimevueTesting.vue'
 </script>
 
 <template>
@@ -9,13 +10,14 @@ import CustomButton from './components/CustomButton.vue'
     <!--<JSON />-->
     <Form />
     <CustomButton
-      label="Submit"
+      label="BootstrapComponentButton"
       color="primary"
       size="small"
       disabled
       btnStyle="filled"
       @click="onClick"
     />
+    <PrimevueTesting />
   </main>
 </template>
 
