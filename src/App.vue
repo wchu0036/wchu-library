@@ -1,12 +1,21 @@
 <script setup>
 // import JSON from './components/JSON.vue'
 import Form from './components/UserForm.vue'
+import CustomButton from './components/CustomButton.vue'
 </script>
 
 <template>
   <main>
     <!--<JSON />-->
     <Form />
+    <CustomButton
+      label="Submit"
+      color="primary"
+      size="small"
+      disabled
+      btnStyle="filled"
+      @click="onClick"
+    />
   </main>
 </template>
 
