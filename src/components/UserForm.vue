@@ -1,44 +1,16 @@
 <template>
-  <!--3.1-->
-  <!-- <div>
-    <h1>User Information Form / Credentials</h1>
-  </div> -->
-  <!-- 3.2 -->
-  <!-- <div class="form">
-    <h1>User Information Form / Credentials</h1>
-    <form>
-      <label for="username">Username:</label><br />
-      <input type="text" id="username" name="username" /><br />
-
-      <label for="password">Password:</label><br />
-      <input type="password" id="password" name="password" /><br />
-
-      <label for="isAustralian">Australian Resident?</label><br />
-      <input type="checkbox" id="isAustralian" name="isAustralian" /><br />
-
-      <label for="reason">Reason For Joining:</label><br />
-      <textarea id="reason" name="reason" rows="3"></textarea><br />
-
-      <label for="gender">Gender</label><br />
-      <select id="gender">
-        <option value="female">Female</option>
-        <option value="male">Male</option>
-        <option value="other">Other</option>
-      </select>
-    </form>
-  </div> -->
   <!--3.5-->
   <div class="container mt-5">
     <div class="row">
-      <div class="col-md-8 offset-md-2">
+      <div class="col-8 offset-2">
         <h1 class="text-center">User Information Form</h1>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-6">
               <label for="username" class="form-label">Username:</label>
               <input type="text" class="form-control" id="username" v-model="formData.username" />
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
               <label for="password" class="form-label">Password:</label>
               <input
                 type="password"
@@ -49,7 +21,7 @@
             </div>
           </div>
           <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-6">
               <div class="form-check">
                 <input
                   type="checkbox"
@@ -60,7 +32,7 @@
                 <label class="form-check-label" for="isAustralian">Australian Resident?</label>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-6">
               <label for="gender" class="form-label">Gender</label><br />
               <select class="form-select" id="gender" v-model="formData.gender">
                 <option value="female">Female</option>
@@ -107,6 +79,34 @@
       </div>
     </div>
   </div>
+  <!--3.1-->
+  <!-- <div>
+    <h1>User Information Form / Credentials</h1>
+  </div> -->
+  <!-- 3.2 -->
+  <!-- <div class="form">
+    <h1>User Information Form / Credentials</h1>
+    <form>
+      <label for="username">Username:</label><br />
+      <input type="text" id="username" name="username" /><br />
+
+      <label for="password">Password:</label><br />
+      <input type="password" id="password" name="password" /><br />
+
+      <label for="isAustralian">Australian Resident?</label><br />
+      <input type="checkbox" id="isAustralian" name="isAustralian" /><br />
+
+      <label for="reason">Reason For Joining:</label><br />
+      <textarea id="reason" name="reason" rows="3"></textarea><br />
+
+      <label for="gender">Gender</label><br />
+      <select id="gender">
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+        <option value="other">Other</option>
+      </select>
+    </form>
+  </div> -->
 </template>
 
 <script setup>
