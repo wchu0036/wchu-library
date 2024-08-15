@@ -5,16 +5,16 @@ import App from './App.vue'
 // import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import './style.css'
-import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/aura'
+//import PrimeVue from 'primevue/config'
+//import Aura from '@primevue/themes/aura'
 
 //createApp(App).mount('#app')
 
 //for using primevue
 const app = createApp(App)
-app.use(PrimeVue, {
-  theme: {
-    preset: Aura
-  }
-})
+// app.use(PrimeVue, {
+//   theme: {
+//     preset: Aura
+//   }
+// })
 app.mount('#app')

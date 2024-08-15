@@ -149,6 +149,7 @@ const clearForm = () => {
     reason: '',
     gender: ''
   }
+  submittedCards.value = []
 }
 </script>
 
