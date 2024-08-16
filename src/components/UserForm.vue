@@ -78,7 +78,7 @@
       </div>
     </div>
   </div>
-  <div class="row mt-5" v-if="submittedCards.length">
+  <div class="row mt-5 col-8 offset-2" v-if="submittedCards.length">
     <DataTable :value="submittedCards" tableStyle="min-width: 50rem">
       <Column field="username" header="Username"></Column>
       <Column field="password" header="Password"></Column>
@@ -189,15 +189,15 @@ const validatePassword = (blur) => {
   const hasSpecialChar = /[!@#$%^&*(),.:{}|<>]/.test(password)
 
   if (password.length < minLength) {
-    if (blur) errors.value.password = 'Password must be at least ' + minLength + ' characters long.'
+    if (blur) errors.value.password = 'Password must be at least ' + minLength + ' characters long'
   } else if (!hasUppercase) {
-    if (blur) errors.value.password = 'Password must contain at least one uppercase letter.'
+    if (blur) errors.value.password = 'Password must contain at least one uppercase letter'
   } else if (!hasLowercase) {
-    if (blur) errors.value.password = 'Password must contain at least one lowercase letter.'
+    if (blur) errors.value.password = 'Password must contain at least one lowercase letter'
   } else if (!hasNumber) {
-    if (blur) errors.value.password = 'Password must contain at least one number.'
+    if (blur) errors.value.password = 'Password must contain at least one number'
   } else if (!hasSpecialChar) {
-    if (blur) errors.value.password = 'Password must contain at least one special character.'
+    if (blur) errors.value.password = 'Password must contain at least one special character'
   } else {
     errors.value.password = null
   }
