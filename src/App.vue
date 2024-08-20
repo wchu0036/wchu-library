@@ -2,13 +2,15 @@
 // import JSON from './components/JSON.vue'
 import Form from './components/UserForm.vue'
 //import Wk3Challenge from './components/Wk3Challenge.vue'
+import BHeader from './components/BHeader.vue'
 </script>
 
 <template>
+  <header>
+    <BHeader />
+  </header>
   <main>
-    <!--<JSON />-->
     <Form />
-    <!--<Wk3Challenge />-->
   </main>
 </template>
 

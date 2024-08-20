@@ -2,7 +2,11 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1 class="text-center">User Information Form</h1>
+        <h1 class="text-center">🗄️ W4. Library Registration Form</h1>
+        <p class="text-center">
+          This form now includes validation. Registered users are displayed in a data table below
+          (PrimeVue).
+        </p>
         <form @submit.prevent="submitForm">
           <div class="row mb-3">
             <div class="col-6">
@@ -98,111 +102,6 @@
       </div>
     </div>
   </div>
-  <!--4.2-->
-  <!-- <div class="container mt-5">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1 class="text-center">User Information Form</h1>
-        <form @submit.prevent="submitForm">
-          <div class="row mb-3">
-            <div class="col-6">
-              <label for="username" class="form-label">Username:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="username"
-                required
-                v-model="formData.username"
-              />
-            </div>
-            <div class="col-6">
-              <label for="password" class="form-label">Password:</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                minlength="4"
-                maxlength="10"
-                required
-                v-model="formData.password"
-              />
-            </div>
-          </div>
-          <div class="row mb-3">
-            <div class="col-6">
-              <div class="form-check">
-                <input
-                  type="radio"
-                  class="form-check-input"
-                  id="isAustralianTrue"
-                  name="isAustralian"
-                  required
-                  :value="true"
-                  v-model="formData.isAustralian"
-                />
-                <label class="form-check-label" for="isAustralianTrue">Australian Resident</label>
-              </div>
-              <div class="form-check">
-                <input
-                  type="radio"
-                  class="form-check-input"
-                  id="isAustralianFalse"
-                  name="isAustralian"
-                  required
-                  :value="false"
-                  v-model="formData.isAustralian"
-                />
-                <label class="form-check-label" for="isAustralianFalse">Non-australian Resident</label>
-              </div>
-            </div>
-            <div class="col-6">
-              <label for="gender" class="form-label">Gender</label><br />
-              <select class="form-select" id="gender" required v-model="formData.gender">
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="reason" class="form-label">Reason for joining</label>
-            <textarea
-              class="form-control"
-              id="reason"
-              rows="3"
-              required
-              v-model="formData.reason"
-            ></textarea>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary me-2">Submit</button>
-            <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-5" v-if="submittedCards.length">
-    <div class="d-flex flex-wrap justify-content-start">
-      <div
-        v-for="(card, index) in submittedCards"
-        :key="index"
-        class="card m-2"
-        style="width: 18rem"
-      >
-        <div class="card-header">User Information</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Username: {{ card.username }}</li>
-          <li class="list-group-item">Password: {{ card.password }}</li>
-          <li class="list-group-item">
-            Australian Resident: {{ card.isAustralian ? 'Yes' : 'No' }}
-          </li>
-          <li class="list-group-item">Gender: {{ card.gender }}</li>
-          <li class="list-group-item">Reason: {{ card.reason }}</li>
-        </ul>
-      </div>
-    </div>
-  </div> -->
   <!-- 4.4 -->
   <div class="row mt-5 col-8 offset-2" v-if="submittedCards.length">
     <DataTable :value="submittedCards" tableStyle="min-width: 50rem">
@@ -214,7 +113,7 @@
     </DataTable>
   </div>
 
-  <!-- <div class="row mt-5 col-8 offset-1" v-if="submittedCards.length">
+  <div class="row mt-5 col-8 offset-1" v-if="submittedCards.length">
     <div class="d-flex flex-wrap justify-content-start">
       <div
         v-for="(card, index) in submittedCards"
@@ -234,7 +133,7 @@
         </ul>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script setup>
