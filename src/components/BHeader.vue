@@ -5,15 +5,18 @@
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills">
         <li class="nav-item">
-          <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
-        </li>
-        <li class="nav-item">
           <router-link to="/" class="nav-link" active-class="active" aria-current="page"
             >Home (Week 5)</router-link
           >
         </li>
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
+        </li>
+        <li class="nav-item" v-if="!store.state.isAuthenticated">
+          <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
+        </li>
+        <li class="nav-item" v-if="store.state.isAuthenticated">
+          <button v-on:click="handleLogout()">Logout</button>
         </li>
       </ul>
     </header>
@@ -56,3 +59,16 @@
   outline: 0;
 }
 </style>
+
+<script setup>
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+
+const store = useStore()
+const router = useRouter()
+
+const handleLogout = () => {
+  store.dispatch('logout') // Call the logout action
+  router.push({ name: 'Login' }) // Navigate to the login page
+}
+</script>

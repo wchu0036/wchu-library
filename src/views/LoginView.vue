@@ -1,11 +1,12 @@
 <template>
   <div class="col-8 offset-2">
     <h1>Login</h1>
-    <form @submit.prevent="submitForm">
+    <form @submit.prevent="handleLogin">
       <label for="username" class="form-label">Username:</label>
-      <input type="text" class="form-control" id="username" v-model="formData.username" />
+      <input type="text" class="form-control" id="username" v-model="username" />
       <label for="password" class="form-label">Password:</label>
-      <input type="password" class="form-control" id="password" v-model="formData.password" />
+      <input type="password" class="form-control" id="password" v-model="password" />
+      <p class="text-danger" v-if="isError">Incorrect user name or password</p>
       <div class="text-center mt-5">
         <button type="submit" class="btn btn-primary me-2">Submit</button>
       </div>
@@ -13,29 +14,29 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue'
+<script>
+import { mapActions } from 'vuex'
 
-const formData = ref({
-  username: '',
-  password: ''
-})
-
-const isAuthenticated = ref(false)
-
-const submitForm = () => {
-  console.log('submitted form')
-  if (validateLoginForm) {
-    console.log('loginnnnn')
-    isAuthenticated.value = true
-  } else {
-    console.log('fail to login')
-    isAuthenticated.value = false
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+      isError: false
+    }
+  },
+  methods: {
+    ...mapActions(['login']),
+    handleLogin() {
+      const user = { username: this.username, password: this.password }
+      if (user.username == 'user' && user.password == 'User123$') {
+        this.login(user)
+        this.$router.push({ name: 'About' })
+      } else {
+        console.log('error')
+        this.isError = true
+      }
+    }
   }
-}
-
-const validateLoginForm = () => {
-  // hardcode for login info
-  return formData.value.username === 'user' && formData.value.password === 'User123$'
 }
 </script>

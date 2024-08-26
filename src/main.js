@@ -6,6 +6,7 @@ import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import './style.css'
 import router from './router'
+import store from './store/store'
 
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
@@ -19,5 +20,6 @@ app.use(PrimeVue, {
     preset: Aura
   }
 })
+app.use(store)
 app.use(router)
 app.mount('#app')
