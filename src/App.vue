@@ -1,6 +1,6 @@
 <script setup>
 // import JSON from './components/JSON.vue'
-import Form from './components/UserForm.vue'
+//import Form from './components/HomeView.vue'
 //import Wk3Challenge from './components/Wk3Challenge.vue'
 import BHeader from './components/BHeader.vue'
 </script>
@@ -10,7 +10,10 @@ import BHeader from './components/BHeader.vue'
     <BHeader />
   </header>
   <main>
-    <Form />
+    <!--<Form />-->
+    <div class="container mt-5">
+      <router-view></router-view>
+    </div>
   </main>
 </template>
 
