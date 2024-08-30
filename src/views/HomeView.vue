@@ -203,6 +203,7 @@ const clearForm = () => {
     gender: ''
   }
   clearErrors()
+  clearMessages()
 }
 
 const errors = ref({
@@ -228,6 +229,12 @@ const clearErrors = () => {
 const messages = ref({
   friend: ''
 })
+
+const clearMessages = () => {
+  messages.value = {
+    friend: ''
+  }
+}
 
 const validateName = (blur) => {
   if (formData.value.username.length < 3) {
