@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '@/views/LoginView.vue'
 import AccessDeniedView from '@/views/AccessDeniedView.vue'
+import AdminView from '@/views/AdminView.vue'
 import store from '@/store/store'
 
 const routes = [
@@ -16,10 +17,12 @@ const routes = [
     name: 'About',
     component: AboutView,
     beforeEnter: (to, from, next) => {
+      console.log('checking if user')
       if (!store.state.isAuthenticated) {
         console.log('Not authenticated, redirecting to login')
         next({ path: '/login' }) // Redirect to the login page
       } else {
+        console.log('is a user')
         next() // Allow navigation to the 'About' page
       }
     }
@@ -28,6 +31,31 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: LoginView
+  },
+  {
+    path: '/accessDenied',
+    name: 'Accessdenied',
+    component: AccessDeniedView
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: AdminView,
+    beforeEnter: (to, from, next) => {
+      console.log('checking if admin')
+      if (store.state.isAuthenticated && store.state.user) {
+        if (store.state.user.username === 'admin') {
+          console.log('Authenticated as admin, navigating to Admin page')
+          next() // Allow navigation to the 'Admin' page
+        } else {
+          console.log('User is authenticated but not an admin, redirecting to access denied')
+          next({ path: '/accessDenied' })
+        }
+      } else {
+        console.log('User is not authenticated, redirecting to access denied')
+        next({ path: '/accessDenied' })
+      }
+    }
   }
 ]
 

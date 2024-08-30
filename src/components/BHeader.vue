@@ -16,7 +16,7 @@
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
         <li class="nav-item" v-if="store.state.isAuthenticated">
-          <button v-on:click="handleLogout()">Logout</button>
+          <button class="btn" v-on:click="handleLogout()">Logout</button>
         </li>
       </ul>
     </header>
