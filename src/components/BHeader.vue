@@ -9,21 +9,24 @@
             >Home (Week 5)</router-link
           >
         </li>
+        <li class="nav-item" v-if="store.state.role == 'admin'">
+          <router-link to="/admin" class="nav-link" active-class="active">Admin</router-link>
+        </li>
         <li class="nav-item">
           <router-link to="/about" class="nav-link" active-class="active">About</router-link>
         </li>
-        <li class="nav-item" v-if="!store.state.isAuthenticated">
+        <!-- <li class="nav-item" v-if="!store.state.isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
-        </li>
+        </li> -->
         <li class="nav-item" v-if="store.state.isAuthenticated">
           <button class="btn" v-on:click="handleLogout()">Logout</button>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!store.state.isAuthenticated">
           <router-link to="/FireLogin" class="nav-link" active-class="active"
             >Firebase Login</router-link
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if="!store.state.isAuthenticated">
           <router-link to="/FireRegister" class="nav-link" active-class="active"
             >Firebase Register</router-link
           >
@@ -32,6 +35,33 @@
     </header>
   </div>
 </template>
+
+<script setup>
+import { getAuth, signOut } from 'firebase/auth'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+
+const store = useStore()
+const router = useRouter()
+
+// Function to handle logout
+const handleLogout = async () => {
+  const auth = getAuth() // Get the Firebase Auth instance
+  console.log('before signout', auth.currentUser)
+  try {
+    // Firebase sign out
+    await signOut(auth)
+    console.log('User signed out from Firebase')
+    console.log('after signout', auth.currentUser)
+    store.dispatch('logout')
+
+    // Navigate to the login page
+    router.push({ name: 'FireLogin' })
+  } catch (error) {
+    console.error('Error logging out:', error)
+  }
+}
+</script>
 
 <style scoped>
 .b-example-divider {
@@ -69,16 +99,3 @@
   outline: 0;
 }
 </style>
-
-<script setup>
-import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
-
-const store = useStore()
-const router = useRouter()
-
-const handleLogout = () => {
-  store.dispatch('logout') // Call the logout action
-  router.push({ name: 'Login' }) // Navigate to the login page
-}
-</script>

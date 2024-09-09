@@ -56,8 +56,8 @@ const routes = [
     component: AdminView,
     beforeEnter: (to, from, next) => {
       console.log('checking if admin')
-      if (store.state.isAuthenticated && store.state.user) {
-        if (store.state.user.username === 'admin') {
+      if (store.state.isAuthenticated && store.state.role) {
+        if (store.state.role === 'admin') {
           console.log('Authenticated as admin, navigating to Admin page')
           next() // Allow navigation to the 'Admin' page
         } else {
