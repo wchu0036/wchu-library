@@ -4,9 +4,22 @@ import AboutView from '../views/AboutView.vue'
 import LoginView from '@/views/LoginView.vue'
 import AccessDeniedView from '@/views/AccessDeniedView.vue'
 import AdminView from '@/views/AdminView.vue'
+import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
+import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
+
 import store from '@/store/store'
 
 const routes = [
+  {
+    path: '/FireLogin',
+    name: 'FireLogin',
+    component: FirebaseSigninView
+  },
+  {
+    path: '/FireRegister',
+    name: 'FireRegister',
+    component: FirebaseRegisterView
+  },
   {
     path: '/',
     name: 'Home',
