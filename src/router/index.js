@@ -6,10 +6,16 @@ import AccessDeniedView from '@/views/AccessDeniedView.vue'
 import AdminView from '@/views/AdminView.vue'
 import FirebaseSigninView from '@/views/FirebaseSigninView.vue'
 import FirebaseRegisterView from '@/views/FirebaseRegisterView.vue'
+import AddBookView from '@/views/AddBookView.vue'
 
 import store from '@/store/store'
 
 const routes = [
+  {
+    path: '/addBook',
+    name: 'AddBook',
+    component: AddBookView
+  },
   {
     path: '/FireLogin',
     name: 'FireLogin',
@@ -33,7 +39,7 @@ const routes = [
       console.log('checking if user')
       if (!store.state.isAuthenticated) {
         console.log('Not authenticated, redirecting to login')
-        next({ path: '/login' }) // Redirect to the login page
+        next({ path: '/FireLogin' }) // Redirect to the login page
       } else {
         console.log('is a user')
         next() // Allow navigation to the 'About' page
