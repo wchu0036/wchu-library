@@ -7,12 +7,12 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBxeC3PLk0XsuP5cxqL27vWRkq0ah802Co',
-  authDomain: 'week7-grace-b5f86.firebaseapp.com',
-  projectId: 'week7-grace-b5f86',
-  storageBucket: 'week7-grace-b5f86.appspot.com',
-  messagingSenderId: '37788436461',
-  appId: '1:37788436461:web:91b51c022adc6a1b1f09e4'
+  apiKey: 'AIzaSyBOouV83hb_Clo50J1_k4Z-5IiiDZ8rhUY',
+  authDomain: 'week7-grace-7742a.firebaseapp.com',
+  projectId: 'week7-grace-7742a',
+  storageBucket: 'week7-grace-7742a.appspot.com',
+  messagingSenderId: '721859597143',
+  appId: '1:721859597143:web:7e48f8a44ba8d27f42e412'
 }
 
 // Initialize Firebase
