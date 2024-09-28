@@ -10,8 +10,10 @@
         <label for="name">Name:</label>
         <input type="text" v-model="name" id="name" />
       </div>
+
       <button type="submit">Add Book</button>
     </form>
+    <button @click="addCapitalisiedBook">Add Book with Capitalised Name</button>
     <button @click="updateBook">Update Book</button>
     <button @click="deleteBook">Delete Book</button>
   </div>
@@ -22,6 +24,7 @@
 import { ref } from 'vue'
 import db from '../firebase/init.js'
 import { collection, addDoc, query, where, getDocs, updateDoc, deleteDoc } from 'firebase/firestore'
+import axios from 'axios'
 
 import BookList from '../components/BookList.vue'
 
@@ -102,12 +105,38 @@ export default {
       }
     }
 
+    const addCapitalisiedBook = async () => {
+      console.log('click addCapitalisiedBook')
+      try {
+        console.log('inside add capital name try')
+
+        const isbnNumber = Number(isbn.value)
+        if (isNaN(isbnNumber)) {
+          alert('ISBN must be a valid number')
+          return
+        }
+        console.log(isbnNumber)
+        console.log(name.value)
+        // Call the Cloud Function that capitalizes the name
+        const response = await axios.post('https://addcapitalisiedbook-en5se5nzka-uc.a.run.app', {
+          isbn: isbnNumber,
+          name: name.value
+        })
+
+        console.log('Book added:', response.data)
+        alert('Book added successfully!')
+      } catch (error) {
+        console.error('Error adding book:', error)
+      }
+    }
+
     return {
       isbn,
       name,
       addBook,
       updateBook,
-      deleteBook
+      deleteBook,
+      addCapitalisiedBook
     }
   },
   components: {

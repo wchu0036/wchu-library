@@ -28,6 +28,34 @@ exports.countBooks = onRequest((req, res) => {
   });
 });
 
+exports.addCapitalisiedBook = onRequest( (req, res) => {
+  cors(req, res, async () => {
+    try {
+      const {isbn, name} = req.body;
+
+      // Check if data is provided
+      if (!isbn || !name) {
+        return res.status(400).send("ISBN and Name are required.");
+      }
+
+      // Capitalize the name
+      const capitalizedName = name.toUpperCase();
+
+      // Save to Firestore
+      const booksCollection = admin.firestore().collection("books");
+      await booksCollection.add({
+        isbn: isbn,
+        name: capitalizedName,
+      });
+
+      res.status(200).send({message: "Book added with capitalized name!"});
+    } catch (error) {
+      console.error("Error capitalizing book name:", error);
+      res.status(500).send("Error adding book.");
+    }
+  });
+});
+
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
 
