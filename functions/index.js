@@ -28,6 +28,27 @@ exports.countBooks = onRequest((req, res) => {
   });
 });
 
+exports.getAllBooks = onRequest((req, res) => {
+  cors(req, res, async () => {
+    try {
+      const booksCollection = admin.firestore().collection("books");
+      const snapshot = await booksCollection.get();
+
+      // Extract the data from each document in the snapshot
+      const books = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+
+      // Send the books array as a response
+      res.status(200).json({books});
+    } catch (error) {
+      console.error("Error getting books:", error.message);
+      res.status(500).send("Error getting books");
+    }
+  });
+});
+
 exports.addCapitalisiedBook = onRequest( (req, res) => {
   cors(req, res, async () => {
     try {

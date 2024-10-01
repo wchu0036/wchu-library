@@ -1,20 +1,28 @@
-<script setup>
-// import JSON from './components/JSON.vue'
-//import Form from './components/HomeView.vue'
-//import Wk3Challenge from './components/Wk3Challenge.vue'
+<script>
 import BHeader from './components/BHeader.vue'
+
+export default {
+  name: 'App',
+  components: {
+    BHeader
+  },
+  computed: {
+    showHeader() {
+      return this.$route.name !== 'CountBookAPI' && this.$route.name !== 'GetAllBookAPI'
+    }
+  }
+}
 </script>
 
 <template>
-  <header>
-    <BHeader />
-  </header>
-  <main>
-    <!--<Form />-->
-    <div class="container mt-5">
+  <div class="main-container">
+    <header v-if="showHeader">
+      <BHeader />
+    </header>
+    <main class="main-box">
       <router-view></router-view>
-    </div>
-  </main>
+    </main>
+  </div>
 </template>
 
 <style scoped></style>
