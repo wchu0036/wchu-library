@@ -8,8 +8,6 @@
   </div>
 </template>
 
-<script setup>
-import store from '@/store/store'
-</script>
+<script setup></script>
 
 <style scoped></style>
