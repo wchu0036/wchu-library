@@ -7,7 +7,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/wchu-library/',
+  base: process.env.DEPLOY_PLATFORM === 'github' ? '/wchu-library/' : '/',
   plugins: [vue(), vueDevTools()],
   resolve: {
     alias: {
